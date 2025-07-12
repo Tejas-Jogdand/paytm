@@ -1,0 +1,22 @@
+import { Heading } from "../components/Heading"
+import { Input } from "../components/Input"
+import { SubHeading } from "../components/SubHeading"
+import { Button } from "../components/Button"
+import { BottomWarning } from "../components/BottomWarning"
+
+export function Signin(){
+    return(
+      <div className="flex justify-center h-screen bg-gray-200">
+              <div className="flex flex-col justify-center">
+                  <div class="border-2 rounded-xl shadow-sm shadow-sky-300 w-sm bg-white border-gray-300 justify-items-center p-8">
+                      <Heading heading={"Sign In"} />
+                      <SubHeading subHeading={"Enter your credential to access your account"} />
+                      <Input type={"email"} lable={"Email"} placeholder={"johndoe@example.com"} />
+                      <Input type={"password"} lable={"Password"} placeholder={""} />
+                      <Button buttonText={"Sign Up"} />
+                      <BottomWarning label={"Don't have an account?"} buttonText={"Sign Up"} to={"/signup"}/>
+                  </div>
+              </div>
+              </div>
+    )
+}

@@ -13,7 +13,7 @@ export function Signin(){
                       <SubHeading subHeading={"Enter your credential to access your account"} />
                       <Input type={"email"} lable={"Email"} placeholder={"johndoe@example.com"} />
                       <Input type={"password"} lable={"Password"} placeholder={""} />
-                      <Button buttonText={"Sign Up"} />
+                      <Button buttonText={"Sign In"} to={'/dashboard'} />
                       <BottomWarning label={"Don't have an account?"} buttonText={"Sign Up"} to={"/signup"}/>
                   </div>
               </div>

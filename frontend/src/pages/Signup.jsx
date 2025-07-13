@@ -15,7 +15,7 @@ export function Signup() {
                 <Input type={"text"} lable={"Last Name"} placeholder={"Doe"} />
                 <Input type={"email"} lable={"Email"} placeholder={"johndoe@example.com"} />
                 <Input type={"password"} lable={"Password"} placeholder={""} />
-                <Button buttonText={"Sign Up"} />
+                <Button buttonText={"Sign Up"} to={'/signin'}/>
                 <BottomWarning label={"Already have an account?"} buttonText={"Login"} to={"/signin"}/>
             </div>
         </div>

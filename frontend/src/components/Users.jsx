@@ -14,7 +14,7 @@ export function Users({ users }) {
                     <div className="pl-2 font-medium">{user.firstName} {user.lastName}</div>
                 </div>
                 <div>
-                    <Button buttonText={"Send Money"} />
+                    <Button buttonText={"Send Money"} to={'/sendmoney'} />
                 </div>
             </div>)
             })}

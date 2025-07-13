@@ -6,7 +6,7 @@ export function Balance(){
     const [refresh,setRefresh] = useState(0);
 
     useEffect(()=>{
-        axios.get("http://localhost:3000/api/v1/account/balance",{
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/account/balance`,{
             headers:{
                 Authorization : "Bearer " + localStorage.getItem("token")
             }

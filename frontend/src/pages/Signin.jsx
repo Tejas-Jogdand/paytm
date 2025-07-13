@@ -3,9 +3,9 @@ import { Input } from "../components/Input"
 import { SubHeading } from "../components/SubHeading"
 import { Button } from "../components/Button"
 import { BottomWarning } from "../components/BottomWarning"
-import { signupAtom } from "../../store/atoms/signupAtom"
+// import { signupAtom } from "../../store/atoms/signupAtom"
 
-import { useSetRecoilState } from "recoil"
+// import { useSetRecoilState } from "recoil"
 import { useState } from "react"
 
 import axios from 'axios'
@@ -43,7 +43,7 @@ export function Signin() {
                         buttonText={"Sign In"}
                         onClick={
                             async () => {
-                                const response = await axios.post("http://localhost:3000/api/v1/user/signin",
+                                const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/signin`,
                                     {
                                         username: username,
                                         password: password

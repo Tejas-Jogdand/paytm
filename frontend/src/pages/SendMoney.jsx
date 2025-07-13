@@ -30,7 +30,7 @@ export function SendMoney() {
                         isTransfer={true}
                         onClick={
                             () => {
-                                axios.post("http://localhost:3000/api/v1/account/transfer", {
+                                axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/account/transfer`, {
                                     to:searchParams.get('id'),
                                     amount: parseInt(amount)                            
                                 },

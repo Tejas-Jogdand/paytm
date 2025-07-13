@@ -53,7 +53,7 @@ export function Signup() {
                     <Button
                         buttonText={"Sign Up"}
                         onClick={ async()=>{
-                            const response = await axios.post("http://localhost:3000/api/v1/user/signup",{
+                            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/signup`,{
                                 username:username,
                                 firstName:firstName,
                                 lastName:lastName,

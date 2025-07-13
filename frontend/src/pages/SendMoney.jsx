@@ -31,16 +31,15 @@ export function SendMoney() {
                         onClick={
                             () => {
                                 axios.post("http://localhost:3000/api/v1/account/transfer", {
-                                    // to:searchParams.get('_id'),
-                                    // amount: parseInt(amount)          
-                                                            
+                                    to:searchParams.get('id'),
+                                    amount: parseInt(amount)                            
                                 },
                                 {
                                     headers: {
                                         Authorization: 'Bearer ' + localStorage.getItem('token')
                                     }
                                 }).then(res=>{
-                                    console.log(res)
+                                    alert(res.data.message)
                                     navigate('/dashboard')
                                 })
                             }

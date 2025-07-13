@@ -4,11 +4,13 @@ import { Button } from "./Button"
 import { useEffect, useState } from "react"
 import axios from 'axios'
 
+import { useNavigate } from "react-router-dom"
+
 export function Users() {
     // const [users,setUsers] = useState([{firstName:"Tejas",lastName:"Jogdand",id:1},{firstName:"Tejas",lastName:"Jogdand",id:1},{firstName:"Tejas",lastName:"Jogdand",id:1}])
     const [filter, setFilter] = useState("")
     const [users, setUsers] = useState([])
-
+    const navigate = useNavigate()
 
     useEffect(() => {
         axios.get(`http://localhost:3000/api/v1/user/bulk?filter=${filter}`)
@@ -33,7 +35,9 @@ export function Users() {
                         <div className="pl-2 font-medium">{user.firstName} {user.lastName}</div>
                     </div>
                     <div>
-                        <Button buttonText={"Send Money"} to={`/sendmoney?id=${user._id}&name=${user.firstName+" "+user.lastName}`} />
+                        <Button buttonText={"Send Money"} onClick={()=>{
+                            navigate(`/sendmoney?id=${user._id}&name=${user.firstName+" "+user.lastName}`)
+                        }} />
                     </div>
                 </div>)
             })}

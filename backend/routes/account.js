@@ -96,7 +96,7 @@ router.post('/transfer',authMiddleware, async (req, res)=>{
         userID: input.data.to
     }).session(session)
 
-    if(toAccount){
+    if(!toAccount){
         await session.abortTransaction();
         return res.status(400).json({
             message: "Invalid account"

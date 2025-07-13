@@ -1,4 +1,23 @@
-export function Balance({balance}){
+import axios from "axios"
+import { useEffect, useState } from "react"
+
+export function Balance(){
+    const [balance,setBalance] = useState();
+    const [refresh,setRefresh] = useState(0);
+
+    useEffect(()=>{
+        axios.get("http://localhost:3000/api/v1/account/balance",{
+            headers:{
+                Authorization : "Bearer " + localStorage.getItem("token")
+            }
+        }).then(
+            response=>{setBalance(response.data.balance)
+                // console.log(response.data.balance)
+            }
+        )
+        
+    },[refresh])
+
     return(
         <div>
             <h4 className="font-medium">Your Balance ${balance}</h4>

@@ -6,6 +6,7 @@ import { User, Account } from '../db.js'
 import authMiddleware from '../middleware.js'
 import jwt from 'jsonwebtoken'
 import zod from 'zod'
+import bcrypt from 'bcrypt'
 
 const signupBody = zod.object({
     username: zod.string().email(),
@@ -33,12 +34,13 @@ router.post('/signup', async (req, res) => {
     }
 
     // console.log(input.data);
-
+    // Hash the password before saving
+    const hashedPassword=await bcrypt.hash(input.data.password,10);
     const newUser = await User.create({
         username: input.data.username,
         firstName: input.data.firstName,
         lastName: input.data.lastName,
-        password: input.data.password,
+        password: hashedPassword
     })
 
     const userID = newUser._id;
@@ -71,17 +73,17 @@ router.post('/signin', async (req, res) => {
         })
     }
 
-    const user = await User.findOne({
-        username: input.data.username,
-        password: input.data.password
-    })
-
-    // console.log(user)
-
+    const user = await User.findOne({username: input.data.username});
     if (!user) {
         return res.status(411).json({
             message: "Error While logging in"
         })
+    }
+    const isPasswordValid=await bcrypt.compare(input.data.password,user.password);
+    if(!isPasswordValid){
+        return res.status(411).json({
+            message: "Invalid credentials"
+        })  
     }
 
     const token = jwt.sign({

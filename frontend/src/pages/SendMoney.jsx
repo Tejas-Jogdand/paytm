@@ -32,7 +32,7 @@ export function SendMoney() {
                             () => {
                                 axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/account/transfer`, {
                                     to:searchParams.get('id'),
-                                    amount: parseInt(amount)                            
+                                    amount: parseInt(amount,10)                            
                                 },
                                 {
                                     headers: {

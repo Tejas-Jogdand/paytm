@@ -7,7 +7,7 @@ export function Dashboard(){
         <div className="bg-white">
             <AppBar title="Payment App" user="Tejas"/>
             <div className="p-2 pt-4">
-            <Balance balance={98903.55}/>
+            <Balance/>
             <Users/>
             </div>
         </div>

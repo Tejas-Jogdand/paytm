@@ -20,7 +20,7 @@ export function Signin() {
     return (
         <div className="flex justify-center h-screen bg-gray-200">
             <div className="flex flex-col justify-center">
-                <div class="border-2 rounded-xl shadow-sm shadow-sky-300 w-sm bg-white border-gray-300 justify-items-center p-8">
+                <div className="border-2 rounded-xl shadow-sm shadow-sky-300 w-sm bg-white border-gray-300 justify-items-center p-8">
                     <Heading
                         heading={"Sign In"}
                     />

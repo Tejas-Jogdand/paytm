@@ -45,7 +45,7 @@ router.post('/signup', async (req, res) => {
 
     await Account.create({
         userID: userID,
-        balance: 1 + Math.random() * 9999999
+        balance: Math.floor(1 + Math.random() * 99999)
     })
 
     const token = jwt.sign({
@@ -80,7 +80,7 @@ router.post('/signin', async (req, res) => {
 
     if (!user) {
         return res.status(411).json({
-            message: "Error While loging"
+            message: "Error While logging in"
         })
     }
 

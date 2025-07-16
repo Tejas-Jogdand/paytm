@@ -3,9 +3,14 @@ import { Balance } from "../components/Balance"
 import { Users } from "../components/Users"
 import { useState,useEffect } from "react"
 import axios from "axios"
+import { Navigate } from "react-router-dom"
 export function Dashboard(){
 
     const [firstName,setfirstName] = useState([]);
+    const token = localStorage.getItem("token");
+  if (!token) {
+    return <Navigate to="/signin" replace />;
+  }
 
     useEffect(()=>{
         async function fetchUsers(){

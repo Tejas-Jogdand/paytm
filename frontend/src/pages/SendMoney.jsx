@@ -1,7 +1,7 @@
 import { Heading } from "../components/Heading"
 import { Input } from "../components/Input"
 import { Button } from "../components/Button"
-import { useSearchParams } from "react-router-dom"
+import { Navigate, useSearchParams } from "react-router-dom"
 import { useState } from "react";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
@@ -12,6 +12,11 @@ export function SendMoney() {
     const navigate = useNavigate()
     // console.log(searchParams)
     // console.log(searchParams.get('id'))
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      return <Navigate to="/signin" replace />;
+    }
 
     return (
         <div className="flex h-screen w-screen bg-gray-50 justify-center">

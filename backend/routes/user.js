@@ -141,19 +141,24 @@ router.get('/me', authMiddleware, async (req, res) => {
     }
 });
 
-router.get('/bulk', async (req, res) => {
+router.get('/bulk', authMiddleware ,async (req, res) => {
     const filter = req.query.filter || "";
     
     //$options: 'i' make case-insensitive
     const users = await User.find({
-        $or: [
-            { firstName: { $regex: filter, $options: 'i' } },
-            { lastName: { $regex: filter, $options: 'i' } }
+        $and: [
+            { _id: { $ne: req.userId } }, // Exclude current user
+            {
+                $or: [
+                    { firstName: { $regex: filter, $options: 'i' } },
+                    { lastName: { $regex: filter, $options: 'i' } }
+                ]
+            }
         ]
     });
 
     res.status(200).json({
-        users: (await users).map(user => ({
+        users:  users.map(user => ({
             username: user.username,
             firstName: user.firstName,
             lastName: user.lastName,

@@ -13,7 +13,11 @@ export function Users() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/bulk?filter=${filter}`)
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/bulk?filter=${filter}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
             .then(
                 response => {
                     setUsers(response.data.users)
@@ -21,11 +25,11 @@ export function Users() {
             )
     }, [filter])
 
-    // console.log(users)
+    console.log(users)
 
     return (
         <div>
-            <Input lable='Users' placeholder='Search users..' type='text' onChange={e=>{setFilter(e.target.value)}}/>
+            <Input lable='Users' placeholder='Search users..' type='text' onChange={e => { setFilter(e.target.value) }} />
             {users.map(user => {
                 return (<div className="flex justify-between items-center" key={user._id}>
                     <div className="flex px-1 justify-between">
@@ -35,8 +39,8 @@ export function Users() {
                         <div className="pl-2 font-medium">{user.firstName} {user.lastName}</div>
                     </div>
                     <div>
-                        <Button buttonText={"Send Money"} onClick={()=>{
-                            navigate(`/sendmoney?id=${user._id}&name=${user.firstName+" "+user.lastName}`)
+                        <Button buttonText={"Send Money"} onClick={() => {
+                            navigate(`/sendmoney?id=${user._id}&name=${user.firstName + " " + user.lastName}`)
                         }} />
                     </div>
                 </div>)

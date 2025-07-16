@@ -18,6 +18,10 @@ export function SendMoney() {
       return <Navigate to="/signin" replace />;
     }
 
+    if(!searchParams.has('id') || !searchParams.has('name')){
+        return <Navigate to='/dashboard' replace/>
+    }
+
     return (
         <div className="flex h-screen w-screen bg-gray-50 justify-center">
             <div className="flex flex-col justify-center">

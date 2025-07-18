@@ -8,11 +8,14 @@ import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import axios from "axios"
 
+import { validateAmount, validateEmail, validateName, validatePassword } from "../utils/validations"
+
 export function Signup() {
     const [username, setUsername,] = useState("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [password, setPassword] = useState("")
+    const [error, setError] = useState("")
 
     const navigate = useNavigate();
 

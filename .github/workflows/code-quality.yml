@@ -1,0 +1,53 @@
+name: Code Quality Check
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        
+    - name: Install root dependencies
+      run: npm ci
+      
+    - name: Install frontend dependencies
+      run: cd frontend && npm ci
+      
+    - name: Install backend dependencies
+      run: cd backend && npm ci
+      
+    - name: Check Prettier formatting
+      run: npm run format:check
+      
+    - name: Run ESLint on frontend
+      run: npm run lint:frontend
+      
+    - name: Run ESLint on backend
+      run: npm run lint:backend
+      
+    - name: Build frontend
+      run: cd frontend && npm run build
+      
+    - name: Check for TypeScript errors (if applicable)
+      run: |
+        if [ -f "frontend/tsconfig.json" ]; then
+          cd frontend && npx tsc --noEmit
+        fi
+      continue-on-error: true

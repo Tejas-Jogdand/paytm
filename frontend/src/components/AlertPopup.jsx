@@ -7,14 +7,14 @@ export function AlertPopup({ message, type = "error", onClose }) {
   
   return (
     <div className={`border ${bgColor} px-4 py-3 rounded relative mb-4`} role="alert">
-      <span className="block sm:inline">{message}</span>
+      <span className="flex px-2 pr-3 text-center">{message}</span>
       {onClose && (
         <span 
-          className="absolute top-0 bottom-0 right-0 px-4 py-3"
+          className="absolute top-1 right-0"
           onClick={onClose}
         >
           <svg 
-            className="fill-current h-6 w-6" 
+            className="fill-current h-4.5 w-6  hover:fill-red-500" 
             role="button" 
             xmlns="http://www.w3.org/2000/svg" 
             viewBox="0 0 20 20"

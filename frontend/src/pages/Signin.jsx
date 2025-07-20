@@ -8,7 +8,7 @@ import { BottomWarning } from "../components/BottomWarning";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
-//Validation schema
+// Validation schema
 const signinSchema = yup.object({
   username: yup.string().email('Invalid email').required('Email is required'),
   password: yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),

@@ -15,6 +15,7 @@ A full-stack digital wallet application built with React.js and Node.js, featuri
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - **React.js** - UI framework
 - **Vite** - Build tool and development server
 - **Tailwind CSS** - Styling framework
@@ -22,6 +23,7 @@ A full-stack digital wallet application built with React.js and Node.js, featuri
 - **Axios** - HTTP client for API requests
 
 ### Backend
+
 - **Node.js** - Runtime environment
 - **Express.js** - Web framework
 - **MongoDB** - NoSQL database
@@ -58,6 +60,7 @@ Indeed/
 ## 🚦 Getting Started
 
 ### Prerequisites
+
 - Node.js (v14 or higher)
 - MongoDB (local or MongoDB Atlas)
 - npm or yarn
@@ -65,26 +68,30 @@ Indeed/
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd paytm
    ```
 
 2. **Install backend dependencies**
+
    ```bash
    cd backend
    npm install
    ```
 
 3. **Install frontend dependencies**
+
    ```bash
    cd ../frontend
    npm install
    ```
 
 4. **Environment Setup**
-   
+
    Create a `.env` file in the backend directory:
+
    ```env
    MONGO_URL=mongodb://localhost:27017/paytm
    JWT_PASS=your-secret-key
@@ -93,16 +100,18 @@ Indeed/
 ### Running the Application
 
 1. **Start the backend server**
+
    ```bash
    cd backend
    npm start
    ```
+
    The backend server will run on `http://localhost:3000`
 
 2. **Start the frontend development server**
    ```bash
    cd frontend
-   npm run dev 
+   npm run dev
    ```
    The frontend will run on `http://localhost:5173`
 
@@ -117,12 +126,14 @@ Indeed/
 ## 🔐 API Endpoints
 
 ### User Routes (`/api/v1/user`)
+
 - `POST /signup` - Create new user account
 - `POST /signin` - User authentication
 - `PUT /` - Update user information
 - `GET /bulk` - Get users with search functionality
 
 ### Account Routes (`/api/v1/account`)
+
 - `GET /balance` - Get current account balance
 - `POST /transfer` - Transfer money between accounts
 

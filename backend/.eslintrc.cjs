@@ -1,0 +1,40 @@
+module.exports = {
+  root: true,
+  env: {
+    node: true,
+    es2020: true,
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:prettier/recommended',
+  ],
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  plugins: ['prettier'],
+  rules: {
+    'prettier/prettier': 'error',
+    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'prefer-const': 'error',
+    'no-var': 'error',
+    'no-console': 'off', // Allow console statements in backend
+    'eqeqeq': ['error', 'always'],
+    'curly': ['error', 'all'],
+    'no-eval': 'error',
+    'no-implied-eval': 'error',
+    'no-new-func': 'error',
+    'no-script-url': 'error',
+    'no-self-compare': 'error',
+    'no-sequences': 'error',
+    'no-throw-literal': 'error',
+    'no-unmodified-loop-condition': 'error',
+    'no-unused-expressions': 'error',
+    'no-useless-call': 'error',
+    'no-useless-concat': 'error',
+    'no-useless-return': 'error',
+    'radix': 'error',
+    'yoda': 'error',
+  },
+  ignorePatterns: ['node_modules/', 'dist/', 'build/'],
+};

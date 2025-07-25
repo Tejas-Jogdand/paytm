@@ -41,7 +41,8 @@ Indeed/
 │   │   ├── components/      # Reusable UI components
 │   │   ├── pages/           # Page components
 │   │   ├── hooks/           # Custom React hooks
-│   │   └── assets/          # Static assets
+│   │   ├── assets/          # Static assets
+│   │   └── utils/           # Utility assets
 │   ├── public/              # Public assets
 │   └── package.json
 ├── backend/                 # Node.js backend application
@@ -131,6 +132,7 @@ Indeed/
 - `POST /signin` - User authentication
 - `PUT /` - Update user information
 - `GET /bulk` - Get users with search functionality
+- `GET /me` - Get current user information
 
 ### Account Routes (`/api/v1/account`)
 
